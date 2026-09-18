@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A rigorously unnecessary record of SISB meetings that should have been emails.">
+  <meta name="theme-color" content="#f4efdf">
+  <title>SISB Pointless Meeting Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23ff4d32'/%3E%3Cpath d='M16 17h32v30H16z' fill='%23f4efdf' stroke='%23171717' stroke-width='4'/%3E%3Cpath d='M23 27h18M23 35h12' stroke='%23171717' stroke-width='4'/%3E%3Cpath d='m39 41 9 9' stroke='%23171717' stroke-width='5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">THIS MEETING COULD HAVE BEEN AN EMAIL&nbsp;&nbsp;•&nbsp;&nbsp;THIS EMAIL COULD HAVE BEEN A SENTENCE&nbsp;&nbsp;•&nbsp;&nbsp;THIS SENTENCE COULD HAVE BEEN SILENCE&nbsp;&nbsp;•&nbsp;&nbsp;</div>
+  </div>
+
+  <header class="site-header">
+    <div class="eyebrow"><span class="status-dot"></span> Internal Productivity Division</div>
+    <button class="icon-button" id="openSettings" type="button" aria-label="Open sync settings" title="Sync settings">
+      <span aria-hidden="true">⚙</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="masthead">
+      <div>
+        <p class="kicker">Official record of institutional time theft</p>
+        <h1>SISB <span>Pointless</span><br>Meeting Tracker</h1>
+      </div>
+      <div class="stamp" aria-label="Definitely necessary">
+        <span>DEFINITELY</span>
+        <strong>NECESSARY</strong>
+        <small>APPROVED BY NOBODY</small>
+      </div>
+    </section>
+
+    <section class="stats-grid" aria-label="Meeting statistics">
+      <article class="stat-card accent-red">
+        <span class="stat-label">Meetings survived</span>
+        <strong id="meetingCount">0</strong>
+        <small>thoughts &amp; prayers</small>
+      </article>
+      <article class="stat-card accent-yellow">
+        <span class="stat-label">Email words required</span>
+        <strong id="totalWords">0</strong>
+        <small>collectively, apparently</small>
+      </article>
+      <article class="stat-card accent-blue">
+        <span class="stat-label">Avg. uselessness</span>
+        <strong><span id="averageScore">—</span><em>/5</em></strong>
+        <small id="averageVerdict">no evidence yet</small>
+      </article>
+      <article class="stat-card accent-black">
+        <span class="stat-label">Bose-level events</span>
+        <strong id="boseCount">0</strong>
+        <small>noise-cancelling required</small>
+      </article>
+    </section>
+
+    <div class="sync-notice" id="syncNotice" role="status">
+      <span><strong>Local mode:</strong> entries are only saved on this browser.</span>
+      <button type="button" id="noticeSettings">Connect GitHub sync</button>
+    </div>
+
+    <section class="workspace">
+      <aside class="log-panel">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <div>
+            <h2>Log the damage</h2>
+            <p>For governance purposes, obviously.</p>
+          </div>
+        </div>
+
+        <form id="meetingForm">
+          <label class="field">
+            <span>Date of incident</span>
+            <input id="meetingDate" name="date" type="date" required>
+            <small id="dayPreview">Day will be calculated automatically</small>
+          </label>
+
+          <label class="field">
+            <span>Who ran it?</span>
+            <input id="meetingRunner" name="runner" type="text" maxlength="80" placeholder="Name of chief time thief" required>
+          </label>
+
+          <label class="field">
+            <span>How many words would the email have been?</span>
+            <div class="number-wrap">
+              <input id="emailWords" name="emailWords" type="number" min="0" max="100000" step="1" placeholder="e.g. 47" required>
+              <span>words</span>
+            </div>
+          </label>
+
+          <fieldset class="field">
+            <legend>Was anything even remotely useful said?</legend>
+            <div class="choice-row usefulness-options">
+              <label><input type="radio" name="useful" value="No" required><span>No</span></label>
+              <label><input type="radio" name="useful" value="Of course not"><span>Of course not</span></label>
+              <label><input type="radio" name="useful" value="OMG kill me"><span>OMG kill me</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field score-field">
+            <legend>Score of uselessness</legend>
+            <div class="score-options">
+              <label><input type="radio" name="score" value="1" required><span><b>1</b><small>Pointless</small></span></label>
+              <label><input type="radio" name="score" value="2"><span><b>2</b><small>Totally pointless</small></span></label>
+              <label><input type="radio" name="score" value="3"><span><b>3</b><small>Unfathomably ridiculous</small></span></label>
+              <label><input type="radio" name="score" value="4"><span><b>4</b><small>I didn't know—I fell asleep</small></span></label>
+              <label><input type="radio" name="score" value="5"><span><b>5</b><small>Bose</small></span></label>
+            </div>
+          </fieldset>
+
+          <button class="submit-button" type="submit">
+            <span id="submitText">Add to the evidence locker</span>
+            <span aria-hidden="true">→</span>
+          </button>
+          <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+        </form>
+      </aside>
+
+      <section class="history-panel">
+        <div class="section-heading history-heading">
+          <span class="section-number">02</span>
+          <div>
+            <h2>The paper trail</h2>
+            <p>A growing monument to calendar abuse.</p>
+          </div>
+          <button class="refresh-button" id="refreshData" type="button">↻ Refresh</button>
+        </div>
+
+        <div id="meetingList" class="meeting-list" aria-live="polite"></div>
+
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">0</div>
+          <h3>Suspiciously meeting-free</h3>
+          <p>Either this is a new tracker or everyone has finally learned how email works.</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <span>SISB PMT / EST. WHENEVER THIS NONSENSE STARTED</span>
+    <span>Productivity was harmed in the making of this website.</span>
+  </footer>
+
+  <dialog id="settingsDialog">
+    <form class="settings-card" id="settingsForm">
+      <div class="settings-header">
+        <div>
+          <p class="kicker">One-time setup</p>
+          <h2>GitHub sync</h2>
+        </div>
+        <button class="close-button" id="closeSettings" type="button" aria-label="Close settings">×</button>
+      </div>
+      <p class="settings-copy">Connect this browser to the repository so new entries are committed to <code>meetings.json</code>. Your colleague can see updates without signing in.</p>
+
+      <label class="field">
+        <span>GitHub username / organisation</span>
+        <input id="githubOwner" type="text" autocomplete="off" placeholder="e.g. alexsmith" required>
+      </label>
+      <label class="field">
+        <span>Repository name</span>
+        <input id="githubRepo" type="text" autocomplete="off" placeholder="sisb-pointless-meeting-tracker" required>
+      </label>
+      <label class="field">
+        <span>Branch</span>
+        <input id="githubBranch" type="text" autocomplete="off" value="main" required>
+      </label>
+      <label class="field">
+        <span>Fine-grained access token</span>
+        <input id="githubToken" type="password" autocomplete="off" placeholder="github_pat_…" required>
+        <small>Give it “Contents: Read and write” access to this repository only. It stays in this browser.</small>
+      </label>
+
+      <div class="settings-actions">
+        <button class="secondary-button" id="disconnectSync" type="button">Disconnect</button>
+        <button class="submit-button compact" value="default" type="submit">Save &amp; test sync</button>
+      </div>
+      <p class="form-message" id="settingsMessage" role="status" aria-live="polite"></p>
+    </form>
+  </dialog>
+
+  <template id="meetingTemplate">
+    <article class="meeting-card">
+      <div class="meeting-date-block">
+        <span class="meeting-day"></span>
+        <strong class="meeting-date"></strong>
+      </div>
+      <div class="meeting-main">
+        <div class="meeting-title-row">
+          <h3>Convened by <span class="meeting-runner"></span></h3>
+          <span class="score-badge"></span>
+        </div>
+        <div class="meeting-details">
+          <span><b class="meeting-words"></b> email words</span>
+          <span class="meeting-useful"></span>
+        </div>
+        <p class="score-description"></p>
+      </div>
+    </article>
+  </template>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
